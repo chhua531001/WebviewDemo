@@ -91,9 +91,14 @@ class ViewController: UIViewController, WebSocketDelegate {
 
             debugPrint("\(jsonObject)")
 
-            let detail = jsonObject["detail"] as? String
+            if let detail = jsonObject["detail"] as? String, let type = jsonObject["type"] as? String,
+                let priority = jsonObject["priority"] as? Int, let time_stamp = jsonObject["time_stamp"] as? Double {
 
-            debugPrint("detail --> \(detail)")
+                debugPrint("detail --> \(detail)")
+                debugPrint("type --> \(type)")
+                debugPrint("priority --> \(priority)")
+                debugPrint("time_stamp --> \(time_stamp)")
+            }
         }
 
     }
