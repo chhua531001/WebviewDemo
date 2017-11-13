@@ -8,17 +8,91 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import Starscream
 
+class ViewController: UIViewController, WebSocketDelegate {
+    
+    var socket: WebSocket!
+    @IBOutlet weak var myWebview: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        socket = WebSocket(url: URL(string: "ws://tools.ziellon.net:9000/")!)
+//        socket = WebSocket(url: URL(string: "ws://localhost:8080/")!, protocols: ["chat","superchat"])
+        socket.delegate = self
+        print("TRYING TO CONNECT")
+        socket.connect()
+        print("DONE TRYING")
+
+//        socket = WebSocket(url: URL(string: "ws://tools.ziellon.net:9000/")!)
+//        //websocketDidConnect
+//        socket.onConnect = {
+//            print("websocket is connected")
+//        }
+//        //websocketDidDisconnect
+//        socket.onDisconnect = { (error: Error?) in
+//            print("websocket is disconnected: \(error?.localizedDescription)")
+//        }
+//        //websocketDidReceiveMessage
+//        socket.onText = { (text: String) in
+//            print("got some text: \(text)")
+//        }
+//        //websocketDidReceiveData
+//        socket.onData = { (data: Data) in
+//            print("got some data: \(data.count)")
+//        }
+//        //you could do onPong as well.
+//        socket.connect()
+
+
+
+
+
+//        let request = URLRequest(url: URL(string: "http://www.google.com")!)
+        let request = URLRequest(url: URL(string: "http://g1.misa.com.tw/python/rfid_warrning_list.php")!)
+
+        myWebview.loadRequest(request)
+
     }
+    
+    //以下5個function是WebSocketDelegate所要implement的function
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("websocketDidConnect")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("websocketDidDisconnect")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("websocketDidReceiveMessage")
+        print("Received text: \(text)")
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("websocketDidReceiveData")
+    }
+    
+    func websocketDidReceivePong(socket: WebSocketClient, data: Data?) {
+        print("Got pong! Maybe some data: \(String(describing: data?.count))")
+    }
+    
+    
+//    var socket: WebSocket!
+
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        self.socket = WebSocket(url: URL(string: "ws://tools.ziellon.net:9000/")!)
+//        self.socket.delegate = self
+//        print("TRYING TO CONNECT")
+//        self.socket.connect()
+//        print("DONE TRYING")
+//    }
+    
+    
 
 
 }

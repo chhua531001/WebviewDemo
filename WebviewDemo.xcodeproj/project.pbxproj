@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B9F7904FB33D1668C678720 /* Pods_WebviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B476EF68A40335A5E3939E4B /* Pods_WebviewDemo.framework */; };
 		F4FD1A8D1FB2FD3B00B13F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FD1A8C1FB2FD3B00B13F0F /* AppDelegate.swift */; };
 		F4FD1A8F1FB2FD3B00B13F0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FD1A8E1FB2FD3B00B13F0F /* ViewController.swift */; };
 		F4FD1A921FB2FD3B00B13F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FD1A901FB2FD3B00B13F0F /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		297E304877C114B2D937DBA8 /* Pods-WebviewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebviewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebviewDemo/Pods-WebviewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		89C634681D81E740EE24E567 /* Pods-WebviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebviewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebviewDemo/Pods-WebviewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B476EF68A40335A5E3939E4B /* Pods_WebviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FD1A891FB2FD3B00B13F0F /* WebviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FD1A8C1FB2FD3B00B13F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FD1A8E1FB2FD3B00B13F0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9F7904FB33D1668C678720 /* Pods_WebviewDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E9A2EA08A34AB7AE8D9FF9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				297E304877C114B2D937DBA8 /* Pods-WebviewDemo.debug.xcconfig */,
+				89C634681D81E740EE24E567 /* Pods-WebviewDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB54C1F17166511F19B1DE3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B476EF68A40335A5E3939E4B /* Pods_WebviewDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4FD1A801FB2FD3A00B13F0F = {
 			isa = PBXGroup;
 			children = (
 				F4FD1A8B1FB2FD3B00B13F0F /* WebviewDemo */,
 				F4FD1A8A1FB2FD3B00B13F0F /* Products */,
+				5E9A2EA08A34AB7AE8D9FF9A /* Pods */,
+				BB54C1F17166511F19B1DE3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FD1A9B1FB2FD3B00B13F0F /* Build configuration list for PBXNativeTarget "WebviewDemo" */;
 			buildPhases = (
+				5F1168BE43D65DEA538528ED /* [CP] Check Pods Manifest.lock */,
 				F4FD1A851FB2FD3B00B13F0F /* Sources */,
 				F4FD1A861FB2FD3B00B13F0F /* Frameworks */,
 				F4FD1A871FB2FD3B00B13F0F /* Resources */,
+				FDB5D7B28ED46FC8ACD223F2 /* [CP] Embed Pods Frameworks */,
+				8725D65AF4875D019A80F126 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F1168BE43D65DEA538528ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WebviewDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8725D65AF4875D019A80F126 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebviewDemo/Pods-WebviewDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDB5D7B28ED46FC8ACD223F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WebviewDemo/Pods-WebviewDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebviewDemo/Pods-WebviewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4FD1A851FB2FD3B00B13F0F /* Sources */ = {
@@ -272,6 +353,7 @@
 		};
 		F4FD1A9C1FB2FD3B00B13F0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 297E304877C114B2D937DBA8 /* Pods-WebviewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -280,12 +362,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ioio.haha.xxxx.WebviewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F4FD1A9D1FB2FD3B00B13F0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89C634681D81E740EE24E567 /* Pods-WebviewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -294,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ioio.haha.xxxx.WebviewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
