@@ -69,6 +69,33 @@ class ViewController: UIViewController, WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("websocketDidReceiveMessage")
         print("Received text: \(text)")
+        
+//        if let data = text.data(using: .utf8) {
+//
+//            //2.把JSON資料轉換成JsonObject的格式，3.再把JsonObject的格式轉換成String: Any的dictionary Array
+//            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers), let articleDictionary = jsonObject as? [String: Any] {
+//
+//                    print("\(articleDictionary)")
+//
+//
+//            }
+//            else {
+//                print("error1")
+//            }
+//        }
+//        else {
+//            print("error2")
+//        }
+        
+        if let jsonObject = convertToDictionary(text: text) {
+
+            debugPrint("\(jsonObject)")
+
+            let detail = jsonObject["detail"] as? String
+
+            debugPrint("detail --> \(detail)")
+        }
+
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -91,6 +118,31 @@ class ViewController: UIViewController, WebSocketDelegate {
 //        self.socket.connect()
 //        print("DONE TRYING")
 //    }
+    
+    
+    //convert String to JSONObject Dictionary
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+    
+    //convert String to JSONObject Dictionary Array
+    func convertToDictionaries(text: String) -> [[String: Any]]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
     
     
 
